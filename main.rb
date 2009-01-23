@@ -22,7 +22,7 @@ module Tweet
         
         url = URI.parse("http://twitter.com/statuses/update.#{format}")
         req = Net::HTTP::Post.new(url.path)
-        req.basic_auth '#{@name}', '#{@passwd}'
+        req.basic_auth "#{@name}", "#{@passwd}"
         req.set_form_data({"status" => "#{data}"}, ';')
         res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
         p res
